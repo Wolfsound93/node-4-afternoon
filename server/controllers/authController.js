@@ -19,21 +19,21 @@ module.exports = {
     const { username, password } = req.body;
 
     const user = users.find(
-      user => user.username === username && user.password === password
+      (user) => user.username === username && user.password === password
     );
     if (user) {
       session.user.username = user.username;
-      res.status(200).send(seesion.user);
+      res.status(200).send(session.user);
     } else {
       res.status(500).send('something went wrong!');
     }
   },
-  singout: (req, res) => {
-    req.seesion.destroy();
+  signOut: (req, res) => {
+    req.session.destroy();
     res.status(200).send(req.seesion);
   },
-  getuser: (req, res) => {
+  getUser: (req, res) => {
     const { session } = req;
     res.status(200).send(session.user);
-  }
+  },
 };

@@ -17,7 +17,7 @@ app.use(
   session({
     secret: SESSION_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -27,8 +27,8 @@ app.use(express.static(`${__dirname}/../build`));
 //end points (AUTH)
 app.post('/api/login', authController.login);
 app.post('/api/register', authController.register);
-app.post('/api/signout', authController.singout);
-app.get('/api/user', authController.getuser);
+app.post('/api/signout', authController.signOut);
+app.get('/api/user', authController.getUser);
 
 //SWAG
 app.get('/api/swag', swagController.read);
